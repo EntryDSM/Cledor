@@ -1,0 +1,30 @@
+{
+  "name": "react-cledor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -cw",
+    "demo": "cd example && npm start"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^16.8.8",
+    "rollup": "^1.7.3",
+    "rollup-plugin-postcss-modules": "^2.0.1",
+    "rollup-plugin-typescript2": "^0.20.1",
+    "rollup-watch": "^4.3.1",
+    "typescript": "^3.3.4000",
+    "typings": "^2.1.1"
+  },
+  "dependencies": {
+    "npm": "^6.9.0",
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5"
+  }
+}
