@@ -1,11 +1,11 @@
 import * as React from 'react';
 
 export interface ChatBarProps {
-  send: (content: String, imageData: File) => void;
+  send: (content: string, imageData: File) => void;
 }
 
 export interface ChatBarState {
-  content: String;
+  content: string;
   imageData: File;
 }
 

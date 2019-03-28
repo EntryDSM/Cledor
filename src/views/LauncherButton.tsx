@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 export interface LauncherButtonProps {
-  appKey: String;
+  appKey: string;
   onClick?: () => void;
 }
 

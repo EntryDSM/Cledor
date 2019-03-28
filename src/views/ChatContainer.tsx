@@ -17,7 +17,7 @@ export default class ChatContainer extends React.Component<
   }
 
   // tslint:disable-next-line: variable-name
-  send = (_content: String, _imageData: File) => null;
+  send = (_content: string, _imageData: File) => null;
 
   public render() {
     return (

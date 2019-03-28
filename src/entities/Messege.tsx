@@ -1,5 +1,5 @@
 export default class Messege {
-  content: String;
-  sendedAt: String;
-  isAuthorMe: Boolean;
+  content: string;
+  sendedAt: string;
+  isAuthorMe: boolean;
 }

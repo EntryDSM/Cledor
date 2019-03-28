@@ -3,7 +3,7 @@ import LauncherButton from './LauncherButton';
 import ChatContainer from './ChatContainer';
 
 export interface MainContainerProps {
-  appKey: String;
+  appKey: string;
 }
 
 export default class MainContainer extends React.Component<
