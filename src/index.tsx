@@ -1,3 +1,3 @@
 import MainContainer from './views/MainContainer';
 
-export { MainContainer };
+export default MainContainer;
