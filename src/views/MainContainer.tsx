@@ -6,10 +6,7 @@ export interface MainContainerProps {
   appKey: string;
 }
 
-export default class MainContainer extends React.Component<
-  MainContainerProps,
-  any
-> {
+export default class MainContainer extends React.Component<MainContainerProps> {
   public render() {
     const { appKey } = this.props;
     return (
