@@ -1,9 +1,3 @@
-import * as React from 'react';
+import MainContainer from './views/MainContainer';
 
-export interface IAppProps {}
-
-export default class IApp extends React.Component<IAppProps, any> {
-  public render() {
-    return <div>Hello, Cledor!</div>;
-  }
-}
+export { MainContainer };
