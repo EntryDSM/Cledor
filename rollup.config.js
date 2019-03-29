@@ -1,5 +1,4 @@
 import typescript from "rollup-plugin-typescript2";
-import postcss from "rollup-plugin-postcss-modules";
 
 export default {
   input: "src/index.tsx",
@@ -8,13 +7,11 @@ export default {
     format: "cjs"
   },
   plugins: [
-    postcss({
-      modules: true
-    }),
     typescript({
       rollupCommonJSResolveHack: true,
       clean: true
     })
   ],
-  expert: ["react", "react-dom"]
+  expert: ["react", "react-dom", "styled-components"],
+  external: ["styled-components"]
 };
