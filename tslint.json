@@ -1,6 +1,7 @@
 {
   "extends": ["tslint-config-airbnb"],
   "rules": {
-    "import-name": [true, { "styledComponents": "styled" }]
+    "import-name": [true, { "styledComponents": "styled" }],
+    "variable-name": [true, "ban-keywords", "check-format", "allow-pascal-case"]
   }
 }
