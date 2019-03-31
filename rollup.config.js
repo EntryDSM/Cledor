@@ -1,4 +1,5 @@
 import typescript from "rollup-plugin-typescript2";
+import url from "rollup-plugin-url";
 
 export default {
   input: "src/index.tsx",
@@ -10,7 +11,8 @@ export default {
     typescript({
       rollupCommonJSResolveHack: true,
       clean: true
-    })
+    }),
+    url()
   ],
   expert: ["react", "react-dom", "styled-components"],
   external: ["styled-components"]
