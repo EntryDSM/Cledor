@@ -27,7 +27,20 @@ export default class ChatContainer extends React.Component<
     return (
       <ChatContainerCover>
         <InfoBar onlines={0} onClose={this.close} />
-        <ChatBoard />
+        <ChatBoard
+          messages={[
+            {
+              content: '대화 내용이 없습니다. 문의사항을 입력해주세요.',
+              isAuthorMe: false,
+              sendedAt: '01:01',
+            },
+            {
+              content: '대화 내용이 없습니다. 문의사항을 입력해주세요.',
+              isAuthorMe: true,
+              sendedAt: '01:01',
+            },
+          ]}
+        />
         <ChatBar send={this.send} />
       </ChatContainerCover>
     );

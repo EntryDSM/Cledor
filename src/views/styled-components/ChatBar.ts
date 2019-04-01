@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import reactTextareaAutosize from 'react-textarea-autosize';
 import Theme from './Theme';
 import upload_imagePng from '../assets/upload_image.png';
-import send_messegePng from '../assets/send_messege.png';
+import send_messagePng from '../assets/send_message.png';
 
 export const ChatBarContainerCover = styled.div`
   display: flex;
@@ -46,7 +46,7 @@ export const SendMessegeButton = styled.button`
   height: 20px;
   border: none;
   background: none;
-  background-image: url(${send_messegePng});
+  background-image: url(${send_messagePng});
   background-size: 20px 20px;
   background-repeat: no-repeat;
   background-position: center;
