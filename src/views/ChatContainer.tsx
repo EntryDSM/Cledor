@@ -4,7 +4,9 @@ import ChatBoard from './ChatBoard';
 import ChatBar from './ChatBar';
 import { ChatContainerCover } from './styled-components/ChatContainer';
 
-export interface ChatContainerProps {}
+export interface ChatContainerProps {
+  onClose: () => void;
+}
 
 export interface ChatContainerState {}
 
@@ -21,7 +23,10 @@ export default class ChatContainer extends React.Component<
   // tslint:disable-next-line: variable-name
   send = (_content: string, _imageData: File) => null;
 
-  close = () => null;
+  close = () => {
+    const { onClose } = this.props;
+    onClose();
+  }
 
   public render() {
     return (
