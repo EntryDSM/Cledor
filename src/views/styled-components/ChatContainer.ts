@@ -7,4 +7,6 @@ export const ChatContainerCover = styled.div`
   background-color: #fff;
   box-shadow: ${Theme.DEFAULT_SHADOW};
   border-radius: ${Theme.APEX_RADIUS};
+  display: flex;
+  flex-direction: column;
 `;
