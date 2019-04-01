@@ -11,8 +11,7 @@ export interface InfoBarProps {
   onClose: () => void;
 }
 
-// tslint:disable-next-line: variable-name
-export default function infoBar({ onlines, onClose }: InfoBarProps) {
+const InfoBar: React.FC<InfoBarProps> = ({ onlines, onClose }: InfoBarProps) => {
   return (
     <InfoBarCover>
       <CloseButton onClick={onClose}>×</CloseButton>
@@ -20,4 +19,6 @@ export default function infoBar({ onlines, onClose }: InfoBarProps) {
       <Onlines>{onlines}명</Onlines>
     </InfoBarCover>
   );
-}
+};
+
+export default InfoBar;

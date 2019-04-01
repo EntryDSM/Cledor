@@ -11,8 +11,7 @@ export interface ChatBoardProps {
   messages?: Message[];
 }
 
-// tslint:disable-next-line: variable-name
-export default function chatBoard({
+const ChatBoard: React.FC<ChatBoardProps> = ({
   messages = [
     {
       content: '대화 내용이 없습니다. 문의사항을 입력해주세요.',
@@ -20,7 +19,7 @@ export default function chatBoard({
       sendedAt: '',
     },
   ],
-}: ChatBoardProps) {
+}: ChatBoardProps) => {
   const MessageBubbles = messages.map(
     ({ content, isAuthorMe, sendedAt }: Message) => (
       <MessageCover authorMe={isAuthorMe}>
@@ -30,4 +29,6 @@ export default function chatBoard({
     ),
   );
   return <ChatBoardCover>{MessageBubbles}</ChatBoardCover>;
-}
+};
+
+export default ChatBoard;
