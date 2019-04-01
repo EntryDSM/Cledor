@@ -5,6 +5,10 @@ export interface LauncherButtonProps {
   onClick?: () => void;
 }
 
-export default function launcherButton({ appKey }: LauncherButtonProps) {
+const LauncherButton: React.FC<LauncherButtonProps> = ({
+  appKey,
+}: LauncherButtonProps) => {
   return <div>{appKey}</div>;
-}
+};
+
+export default LauncherButton;

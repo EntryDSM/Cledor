@@ -5,6 +5,8 @@ export interface InfoBarProps {
 }
 
 // tslint:disable-next-line: variable-name
-export default function infoBar(_props: InfoBarProps) {
+const InfoBar: React.FC<InfoBarProps> = (_props: InfoBarProps) => {
   return <div />;
-}
+};
+
+export default InfoBar;

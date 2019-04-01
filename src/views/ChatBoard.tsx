@@ -6,6 +6,8 @@ export interface ChatBoardProps {
 }
 
 // tslint:disable-next-line: variable-name
-export default function chatBoard(_props: ChatBoardProps) {
+const ChatBoard: React.FC<ChatBoardProps> = (_props: ChatBoardProps) => {
   return <div />;
-}
+};
+
+export default ChatBoard;
