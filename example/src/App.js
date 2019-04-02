@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
-import Cledor from 'react-cledor'
+import Cledor from "react-cledor";
 
 export default class App extends Component {
-  render () {
+  render() {
     return (
       <div>
-        <Cledor />
+        <Cledor appKey={""} />
       </div>
-    )
+    );
   }
 }
