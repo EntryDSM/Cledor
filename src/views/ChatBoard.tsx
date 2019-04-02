@@ -14,6 +14,7 @@ export interface ChatBoardProps {
 const ChatBoard: React.FC<ChatBoardProps> = ({
   messages = [
     {
+      id: '0',
       content: '대화 내용이 없습니다. 문의사항을 입력해주세요.',
       isAuthorMe: false,
       sendedAt: '',
@@ -21,8 +22,8 @@ const ChatBoard: React.FC<ChatBoardProps> = ({
   ],
 }) => {
   const MessageBubbles = messages.map(
-    ({ content, isAuthorMe, sendedAt }: Message) => (
-      <MessageCover authorMe={isAuthorMe}>
+    ({ id, content, isAuthorMe, sendedAt }: Message) => (
+      <MessageCover key={id} authorMe={isAuthorMe}>
         <MessageBubble>{content}</MessageBubble>
         <MessageTime>{sendedAt}</MessageTime>
       </MessageCover>
