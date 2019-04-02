@@ -7,7 +7,7 @@ import {
   MessageTime,
 } from './styled-components/ChatBoard';
 
-export interface ChatBoardProps {
+interface ChatBoardProps {
   messages?: Message[];
 }
 

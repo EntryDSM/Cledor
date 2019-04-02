@@ -6,7 +6,7 @@ import {
   CloseButton,
 } from './styled-components/InfoBar';
 
-export interface InfoBarProps {
+interface InfoBarProps {
   onlines: number;
   onClose: () => void;
 }

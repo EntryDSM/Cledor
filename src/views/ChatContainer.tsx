@@ -4,9 +4,9 @@ import ChatBoard from './ChatBoard';
 import ChatBar from './ChatBar';
 import { ChatContainerCover } from './styled-components/ChatContainer';
 
-export interface ChatContainerProps {}
+interface ChatContainerProps {}
 
-export interface ChatContainerState {}
+interface ChatContainerState {}
 
 export default class ChatContainer extends React.Component<
   ChatContainerProps,
