@@ -25,7 +25,7 @@ export const MessageTime = styled.div`
   padding: 5px;
 `;
 
-export interface MessageCoverProps {
+interface MessageCoverProps {
   authorMe?: boolean;
 }
 

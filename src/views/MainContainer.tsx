@@ -3,7 +3,7 @@ import * as React from 'react';
 import ChatContainer from './ChatContainer';
 import { MainContainerCover } from './styled-components/MainContainer';
 
-export interface MainContainerProps {
+interface MainContainerProps {
   appKey: string;
 }
 

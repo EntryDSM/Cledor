@@ -6,12 +6,12 @@ import {
   CloseButton,
 } from './styled-components/InfoBar';
 
-export interface InfoBarProps {
+interface InfoBarProps {
   onlines: number;
   onClose: () => void;
 }
 
-const InfoBar: React.FC<InfoBarProps> = ({ onlines, onClose }: InfoBarProps) => {
+const InfoBar: React.FC<InfoBarProps> = ({ onlines, onClose }) => {
   return (
     <InfoBarCover>
       <CloseButton onClick={onClose}>×</CloseButton>
