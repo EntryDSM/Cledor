@@ -5,9 +5,7 @@ export interface LauncherButtonProps {
   onClick?: () => void;
 }
 
-const LauncherButton: React.FC<LauncherButtonProps> = ({
-  onClick,
-}: LauncherButtonProps) => {
+const LauncherButton: React.FC<LauncherButtonProps> = ({ onClick }) => {
   return <LauncherButtonCover onClick={onClick} />;
 };
 

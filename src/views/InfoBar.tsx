@@ -11,7 +11,7 @@ export interface InfoBarProps {
   onClose: () => void;
 }
 
-const InfoBar: React.FC<InfoBarProps> = ({ onlines, onClose }: InfoBarProps) => {
+const InfoBar: React.FC<InfoBarProps> = ({ onlines, onClose }) => {
   return (
     <InfoBarCover>
       <CloseButton onClick={onClose}>×</CloseButton>

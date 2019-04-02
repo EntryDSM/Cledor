@@ -19,7 +19,7 @@ const ChatBoard: React.FC<ChatBoardProps> = ({
       sendedAt: '',
     },
   ],
-}: ChatBoardProps) => {
+}) => {
   const MessageBubbles = messages.map(
     ({ content, isAuthorMe, sendedAt }: Message) => (
       <MessageCover authorMe={isAuthorMe}>
