@@ -4,11 +4,11 @@ import ChatBoard from './ChatBoard';
 import ChatBar from './ChatBar';
 import { ChatContainerCover } from './styled-components/ChatContainer';
 
-export interface ChatContainerProps {
+interface ChatContainerProps {
   onClose: () => void;
 }
 
-export interface ChatContainerState {}
+interface ChatContainerState {}
 
 export default class ChatContainer extends React.Component<
   ChatContainerProps,
@@ -35,11 +35,13 @@ export default class ChatContainer extends React.Component<
         <ChatBoard
           messages={[
             {
+              id: '0',
               content: '대화 내용이 없습니다. 문의사항을 입력해주세요.',
               isAuthorMe: false,
               sendedAt: '01:01',
             },
             {
+              id: '1',
               content: '대화 내용이 없습니다. 문의사항을 입력해주세요.',
               isAuthorMe: true,
               sendedAt: '01:01',

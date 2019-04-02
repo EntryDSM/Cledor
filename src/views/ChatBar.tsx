@@ -8,11 +8,11 @@ import {
   FileInputLabel,
 } from './styled-components/ChatBar';
 
-export interface ChatBarProps {
+interface ChatBarProps {
   send: (content: string, imageData: File) => void;
 }
 
-export interface ChatBarState {
+interface ChatBarState {
   content: string;
 }
 
