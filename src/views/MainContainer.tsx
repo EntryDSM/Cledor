@@ -1,19 +1,19 @@
 import * as React from 'react';
-import LauncherButton from './LauncherButton';
+// import LauncherButton from './LauncherButton';
 import ChatContainer from './ChatContainer';
+import { MainContainerCover } from './styled-components/MainContainer';
 
-export interface MainContainerProps {
+interface MainContainerProps {
   appKey: string;
 }
 
 export default class MainContainer extends React.Component<MainContainerProps> {
   public render() {
-    const { appKey } = this.props;
     return (
-      <>
-        <LauncherButton appKey={appKey} />
+      <MainContainerCover>
+        {/* <LauncherButton /> */}
         <ChatContainer />
-      </>
+      </MainContainerCover>
     );
   }
 }

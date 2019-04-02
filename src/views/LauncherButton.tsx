@@ -1,14 +1,12 @@
 import * as React from 'react';
+import { LauncherButtonCover } from './styled-components/LauncherButton';
 
-export interface LauncherButtonProps {
-  appKey: string;
+interface LauncherButtonProps {
   onClick?: () => void;
 }
 
-const LauncherButton: React.FC<LauncherButtonProps> = ({
-  appKey,
-}: LauncherButtonProps) => {
-  return <div>{appKey}</div>;
+const LauncherButton: React.FC<LauncherButtonProps> = ({ onClick }) => {
+  return <LauncherButtonCover onClick={onClick} />;
 };
 
 export default LauncherButton;

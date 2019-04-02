@@ -1,10 +1,16 @@
 import * as React from 'react';
+import {
+  ChatBarContainerCover,
+  MessegeTextarea,
+  UploadImageButton,
+  SendMessegeButton,
+} from './styled-components/ChatBar';
 
-export interface ChatBarProps {
+interface ChatBarProps {
   send: (content: string, imageData: File) => void;
 }
 
-export interface ChatBarState {
+interface ChatBarState {
   content: string;
   imageData: File;
 }
@@ -20,6 +26,12 @@ export default class ChatBar extends React.Component<
   }
 
   public render() {
-    return <div />;
+    return (
+      <ChatBarContainerCover>
+        <UploadImageButton />
+        <MessegeTextarea placeholder="메시지를 입력해주세요" maxRows={6} />
+        <SendMessegeButton />
+      </ChatBarContainerCover>
+    );
   }
 }
