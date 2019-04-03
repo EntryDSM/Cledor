@@ -4,6 +4,8 @@ import {
   MessegeTextarea,
   UploadImageButton,
   SendMessegeButton,
+  HiddenFileInput,
+  FileInputLabel,
 } from './styled-components/ChatBar';
 
 interface ChatBarProps {
@@ -12,7 +14,6 @@ interface ChatBarProps {
 
 interface ChatBarState {
   content: string;
-  imageData: File;
 }
 
 export default class ChatBar extends React.Component<
@@ -22,13 +23,32 @@ export default class ChatBar extends React.Component<
   constructor(props: ChatBarProps) {
     super(props);
 
-    // this.state = {};
+    this.state = {
+      content: '',
+    };
+  }
+
+  private handleUploadImage = ({
+    target: { files },
+  }: React.ChangeEvent<HTMLInputElement>) => {
+    if (files) {
+      const { send } = this.props;
+      const { content } = this.state;
+      send(content, files[0]);
+    }
   }
 
   public render() {
     return (
       <ChatBarContainerCover>
-        <UploadImageButton />
+        <UploadImageButton>
+          <FileInputLabel htmlFor="upload-image" />
+        </UploadImageButton>
+        <HiddenFileInput
+          type="file"
+          id="upload-image"
+          onChange={this.handleUploadImage}
+        />
         <MessegeTextarea placeholder="메시지를 입력해주세요" maxRows={6} />
         <SendMessegeButton />
       </ChatBarContainerCover>

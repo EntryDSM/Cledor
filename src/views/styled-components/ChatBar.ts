@@ -39,6 +39,7 @@ export const UploadImageButton = styled.button`
   background-size: 20px 20px;
   background-repeat: no-repeat;
   background-position: center;
+  outline: none;
 `;
 
 export const SendMessegeButton = styled.button`
@@ -50,4 +51,16 @@ export const SendMessegeButton = styled.button`
   background-size: 20px 20px;
   background-repeat: no-repeat;
   background-position: center;
+  outline: none;
+`;
+
+export const HiddenFileInput = styled.input`
+  display: none;
+`;
+
+export const FileInputLabel = styled.label`
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: pointer;
 `;
