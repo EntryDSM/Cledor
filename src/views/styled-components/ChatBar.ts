@@ -52,6 +52,7 @@ export const SendMessegeButton = styled.button`
   background-repeat: no-repeat;
   background-position: center;
   outline: none;
+  cursor: pointer;
 `;
 
 export const HiddenFileInput = styled.input`

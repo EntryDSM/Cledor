@@ -3,9 +3,7 @@ import InfoBar from './InfoBar';
 import ChatBoard from './ChatBoard';
 import ChatBar from './ChatBar';
 import { ChatContainerCover } from './styled-components/ChatContainer';
-import socket from '../socket/socket';
-
-console.log(socket);
+import { messageSend } from '../socket/socket';
 
 interface ChatContainerProps {
   onClose: () => void;
@@ -23,8 +21,9 @@ export default class ChatContainer extends React.Component<
     this.state = {};
   }
 
-  // tslint:disable-next-line: variable-name
-  send = (_content: string, _imageData: File) => null;
+  send = (content: string, imageData?: File) => {
+    messageSend(content, imageData);
+  }
 
   close = () => {
     const { onClose } = this.props;

@@ -9,7 +9,7 @@
   "scripts": {
     "build": "rollup -c",
     "watch": "rollup -cw",
-    "demo": "cd example && npm start"
+    "demo": "cd example && npm i && npm start"
   },
   "author": "",
   "license": "MIT",
@@ -32,7 +32,8 @@
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
     "react-textarea-autosize": "^7.1.0",
+    "socket.io-client": "^2.2.0",
     "styled-components": "^4.2.0",
-    "socket.io-client": "^2.2.0"
+    "ts-keycode-enum": "^1.0.6"
   }
 }
