@@ -3,7 +3,7 @@ import InfoBar from './InfoBar';
 import ChatBoard from './ChatBoard';
 import ChatBar from './ChatBar';
 import { ChatContainerCover } from './styled-components/ChatContainer';
-import { messageSend } from '../socket/socket';
+import { sendMessage } from '../socket/socket';
 
 interface ChatContainerProps {
   onClose: () => void;
@@ -22,7 +22,7 @@ export default class ChatContainer extends React.Component<
   }
 
   send = (content: string, imageData?: File) => {
-    messageSend(content, imageData);
+    sendMessage(content, imageData);
   }
 
   close = () => {

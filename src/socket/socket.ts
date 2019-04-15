@@ -8,7 +8,7 @@ enum Event {
   SEND_MESSAGE = 'send message',
 }
 
-export const messageSend = (content: string, imageData?: File) => {
+export const sendMessage = (content: string, imageData?: File) => {
   if (imageData instanceof File) {
     getBase64(imageData).then(encodedImageData => {
       socket.emit(Event.SEND_MESSAGE, content, encodedImageData);
