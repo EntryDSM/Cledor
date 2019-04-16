@@ -54,7 +54,7 @@ export default class ChatBar extends React.Component<
   private handleUploadImage = ({
     target: { files },
   }: React.ChangeEvent<HTMLInputElement>) => {
-    if (files) {
+    if (files && files.length > 0) {
       this.send(files[0]);
     }
   }
