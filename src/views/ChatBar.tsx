@@ -29,6 +29,11 @@ export default class ChatBar extends React.Component<
     };
   }
 
+  private get isEmptyContent() {
+    const { content } = this.state;
+    return !content;
+  }
+
   private handleTextareaChange = ({
     target: { value },
   }: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -39,7 +44,7 @@ export default class ChatBar extends React.Component<
     ctrlKey,
     keyCode,
   }: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if (ctrlKey && keyCode === Key.Enter) {
+    if (ctrlKey && keyCode === Key.Enter && !this.isEmptyContent) {
       this.send();
     }
   }
