@@ -29,32 +29,42 @@ export default class ChatBar extends React.Component<
     };
   }
 
+  private get isEmptyContent() {
+    const { content } = this.state;
+    return !content;
+  }
+
   private handleTextareaChange = ({
     target: { value },
   }: React.ChangeEvent<HTMLTextAreaElement>) => {
     this.setState({ content: value });
   }
 
-  private handleTextareaKeyDown = ({
-    ctrlKey,
-    keyCode,
-  }: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if (ctrlKey && keyCode === Key.Enter) {
+  private handleTextareaKeyDown = (
+    event: React.KeyboardEvent<HTMLTextAreaElement>,
+  ) => {
+    const { shiftKey, altKey, ctrlKey, keyCode } = event;
+    if (
+      keyCode === Key.Enter &&
+      !(shiftKey || altKey || ctrlKey) &&
+      !this.isEmptyContent
+    ) {
       this.send();
+      event.preventDefault();
     }
   }
 
   private send = (file?: File) => {
     const { send } = this.props;
     const { content } = this.state;
-    send(content, file);
+    send(content.trim(), file);
     this.setState({ content: '' });
   }
 
   private handleUploadImage = ({
     target: { files },
   }: React.ChangeEvent<HTMLInputElement>) => {
-    if (files) {
+    if (files && files.length > 0) {
       this.send(files[0]);
     }
   }
