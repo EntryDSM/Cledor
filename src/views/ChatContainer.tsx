@@ -1,15 +1,18 @@
 import * as React from 'react';
+import Message from '../entities/Message';
 import InfoBar from './InfoBar';
 import ChatBoard from './ChatBoard';
 import ChatBar from './ChatBar';
 import { ChatContainerCover } from './styled-components/ChatContainer';
-import { sendMessage } from '../socket/socket';
+import { sendMessage, listenOnReceiveMessage } from '../socket/socket';
 
 interface ChatContainerProps {
   onClose: () => void;
 }
 
-interface ChatContainerState {}
+interface ChatContainerState {
+  messages: Message[];
+}
 
 export default class ChatContainer extends React.Component<
   ChatContainerProps,
@@ -18,11 +21,22 @@ export default class ChatContainer extends React.Component<
   constructor(props: ChatContainerProps) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      messages: [],
+    };
+
+    listenOnReceiveMessage(this.appendMessage);
   }
 
   send = (content: string, imageData?: File) => {
     sendMessage(content, imageData);
+  }
+
+  appendMessage = (message: Message) => {
+    const { messages } = this.state;
+    this.setState({
+      messages: messages.concat(message),
+    });
   }
 
   close = () => {
@@ -34,22 +48,7 @@ export default class ChatContainer extends React.Component<
     return (
       <ChatContainerCover>
         <InfoBar onlines={0} onClose={this.close} />
-        <ChatBoard
-          messages={[
-            {
-              id: '0',
-              content: '대화 내용이 없습니다. 문의사항을 입력해주세요.',
-              isAuthorMe: false,
-              sendedAt: '01:01',
-            },
-            {
-              id: '1',
-              content: '대화 내용이 없습니다. 문의사항을 입력해주세요.',
-              isAuthorMe: true,
-              sendedAt: '01:01',
-            },
-          ]}
-        />
+        <ChatBoard messages={this.state.messages} />
         <ChatBar send={this.send} />
       </ChatContainerCover>
     );
