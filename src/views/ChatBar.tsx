@@ -57,7 +57,7 @@ export default class ChatBar extends React.Component<
   private send = (file?: File) => {
     const { send } = this.props;
     const { content } = this.state;
-    send(content, file);
+    send(content.trim(), file);
     this.setState({ content: '' });
   }
 
