@@ -40,12 +40,17 @@ export default class ChatBar extends React.Component<
     this.setState({ content: value });
   }
 
-  private handleTextareaKeyDown = ({
-    ctrlKey,
-    keyCode,
-  }: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if (ctrlKey && keyCode === Key.Enter && !this.isEmptyContent) {
+  private handleTextareaKeyDown = (
+    event: React.KeyboardEvent<HTMLTextAreaElement>,
+  ) => {
+    const { shiftKey, altKey, ctrlKey, keyCode } = event;
+    if (
+      keyCode === Key.Enter &&
+      !(shiftKey || altKey || ctrlKey) &&
+      !this.isEmptyContent
+    ) {
       this.send();
+      event.preventDefault();
     }
   }
 
