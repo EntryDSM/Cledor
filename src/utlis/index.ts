@@ -15,3 +15,7 @@ export const getBase64 = (file: File) => {
     reader.onerror = error => reject(error);
   });
 };
+
+export const formatTime = (date: Date) => {
+  return `${date.getHours()}:${date.getMinutes()}`;
+};

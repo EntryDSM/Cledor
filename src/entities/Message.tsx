@@ -1,6 +1,6 @@
 export default class Message {
   id: string;
   content: string;
-  sendedAt: string;
+  sendedAt?: number;
   isAuthorMe: boolean;
 }

@@ -17,6 +17,10 @@ export const MessageBubble = styled.div`
   border-bottom-left-radius: ${Theme.APEX_RADIUS};
 `;
 
+export const TextLine = styled.p`
+  margin: 0;
+`;
+
 export const MessageTime = styled.div`
   font-size: 10px;
   color: #aaa;
