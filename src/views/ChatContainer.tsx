@@ -3,9 +3,7 @@ import InfoBar from './InfoBar';
 import ChatBoard from './ChatBoard';
 import ChatBar from './ChatBar';
 import { ChatContainerCover } from './styled-components/ChatContainer';
-import socket from '../socket/socket';
-
-console.log(socket);
+// import socket from '../socket/socket';
 
 interface ChatContainerProps {
   onClose: () => void;
