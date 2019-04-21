@@ -15,6 +15,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/react": "^16.8.8",
+    "@types/socket.io-client": "^1.4.32",
     "@types/styled-components": "^4.1.12",
     "prettier-tslint": "^0.4.2",
     "rollup": "^1.7.3",
@@ -31,6 +32,7 @@
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
     "react-textarea-autosize": "^7.1.0",
-    "styled-components": "^4.2.0"
+    "styled-components": "^4.2.0",
+    "socket.io-client": "^2.2.0"
   }
 }
