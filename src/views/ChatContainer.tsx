@@ -1,9 +1,12 @@
 import * as React from 'react';
 import Message from '../entities/Message';
 import InfoBar from './InfoBar';
-import ChatBoard from './ChatBoard';
+import MessageWrapper from './MessageWrapper';
 import ChatBar from './ChatBar';
-import { ChatContainerCover } from './styled-components/ChatContainer';
+import {
+  ChatContainerCover,
+  ChatBoardCover,
+} from './styled-components/ChatContainer';
 import { sendMessage, listenOnReceiveMessage } from '../socket/socket';
 
 interface ChatContainerProps {
@@ -45,10 +48,24 @@ export default class ChatContainer extends React.Component<
   }
 
   public render() {
+    const { messages } = this.state;
+    const wrappedMessages = messages.map(
+      ({ content, encodedImageData, isAdmin, id, sendedAt }) => {
+        return (
+          <MessageWrapper
+            key={id}
+            sendedAt={sendedAt}
+            isAdmin={isAdmin}
+            encodedImageData={encodedImageData}
+            content={content}
+          />
+        );
+      },
+    );
     return (
       <ChatContainerCover>
         <InfoBar onlines={0} onClose={this.close} />
-        <ChatBoard messages={this.state.messages} />
+        <ChatBoardCover>{wrappedMessages}</ChatBoardCover>
         <ChatBar send={this.send} />
       </ChatContainerCover>
     );

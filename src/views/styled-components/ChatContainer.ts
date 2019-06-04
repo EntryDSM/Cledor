@@ -10,3 +10,9 @@ export const ChatContainerCover = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
+export const ChatBoardCover = styled.div`
+  flex: 1;
+  padding: 20px;
+  overflow-y: scroll;
+`;
