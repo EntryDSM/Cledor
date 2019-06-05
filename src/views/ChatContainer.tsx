@@ -7,7 +7,8 @@ import {
   ChatContainerCover,
   ChatBoardCover,
 } from './styled-components/ChatContainer';
-import { sendMessage, listenOnReceiveMessage } from '../socket/socket';
+import { sendMessage, listenOnReceiveMessage, join } from '../socket/socket';
+import EmailInput from './EmailInput';
 
 interface ChatContainerProps {
   onClose: () => void;
@@ -15,6 +16,7 @@ interface ChatContainerProps {
 
 interface ChatContainerState {
   messages: Message[];
+  email: string;
 }
 
 export default class ChatContainer extends React.Component<
@@ -26,13 +28,15 @@ export default class ChatContainer extends React.Component<
 
     this.state = {
       messages: [],
+      email: '',
     };
 
     listenOnReceiveMessage(this.appendMessage);
   }
 
   send = (content: string, imageData?: File) => {
-    sendMessage(content, imageData);
+    const { email } = this.state;
+    sendMessage({ email, content, imageData });
   }
 
   appendMessage = (message: Message) => {
@@ -47,8 +51,14 @@ export default class ChatContainer extends React.Component<
     onClose();
   }
 
+  handleEmailSubmit = (email: string) => {
+    this.setState({ email });
+    join({ email });
+  }
+
   public render() {
-    const { messages } = this.state;
+    const { messages, email } = this.state;
+
     const wrappedMessages = messages.map(
       ({ content, encodedImageData, isAdmin, id, sendedAt }) => {
         return (
@@ -62,11 +72,16 @@ export default class ChatContainer extends React.Component<
         );
       },
     );
+
     return (
       <ChatContainerCover>
         <InfoBar onlines={0} onClose={this.close} />
         <ChatBoardCover>{wrappedMessages}</ChatBoardCover>
-        <ChatBar send={this.send} />
+        {email === '' ? (
+          <EmailInput onSubmit={this.handleEmailSubmit} />
+        ) : (
+          <ChatBar send={this.send} />
+        )}
       </ChatContainerCover>
     );
   }

@@ -2,21 +2,38 @@ import socketIoClient from 'socket.io-client';
 import Message from '../entities/Message';
 import { connectionUrl } from './endpoint';
 import { getBase64 } from '../utlis';
+import { Event } from './events';
 
 const socket = socketIoClient(connectionUrl);
 
-enum Event {
-  SEND_MESSAGE = 'send message',
-  RECEIVE_MESSAGE = 'receive message',
-}
+export const join = ({ email }: { email: string }) => {
+  socket.emit(Event.JOIN, { room: email });
+};
 
-export const sendMessage = (content: string, imageData?: File) => {
+export const sendMessage = ({
+  email,
+  content,
+  imageData,
+}: {
+  email: string;
+  content: string;
+  imageData?: File;
+}) => {
   if (imageData instanceof File) {
     getBase64(imageData).then(encodedImageData => {
-      socket.emit(Event.SEND_MESSAGE, content, encodedImageData);
+      socket.emit(Event.SEND_MESSAGE, {
+        content,
+        encodedImageData,
+        writer: email,
+        room: email,
+      });
     });
   } else {
-    socket.emit(Event.SEND_MESSAGE, content);
+    socket.emit(Event.SEND_MESSAGE, {
+      content,
+      writer: email,
+      room: email,
+    });
   }
 };
 
