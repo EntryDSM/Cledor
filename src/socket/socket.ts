@@ -42,3 +42,9 @@ export const listenOnReceiveMessage = (
 ) => {
   socket.on(Event.RECEIVE_MESSAGE, listener);
 };
+
+export const listenOnChangeOnlineAdminCount = (
+  listener: (onlineAdminCount: number) => void,
+) => {
+  socket.on(Event.ONLINE_ADMIN_COUNT, listener);
+};

@@ -7,7 +7,12 @@ import {
   ChatContainerCover,
   ChatBoardCover,
 } from './styled-components/ChatContainer';
-import { sendMessage, listenOnReceiveMessage, join } from '../socket/socket';
+import {
+  sendMessage,
+  listenOnReceiveMessage,
+  join,
+  listenOnChangeOnlineAdminCount,
+} from '../socket/socket';
 import EmailInput from './EmailInput';
 
 interface ChatContainerProps {
@@ -17,6 +22,7 @@ interface ChatContainerProps {
 interface ChatContainerState {
   messages: Message[];
   email: string;
+  onlineAdminCount: number;
 }
 
 export default class ChatContainer extends React.Component<
@@ -29,9 +35,11 @@ export default class ChatContainer extends React.Component<
     this.state = {
       messages: [],
       email: '',
+      onlineAdminCount: 0,
     };
 
     listenOnReceiveMessage(this.appendMessage);
+    listenOnChangeOnlineAdminCount(this.changeOnlineAdminCount);
   }
 
   send = (content: string, imageData?: File) => {
@@ -46,6 +54,10 @@ export default class ChatContainer extends React.Component<
     });
   }
 
+  changeOnlineAdminCount = (onlineAdminCount: number) => {
+    this.setState({ onlineAdminCount });
+  }
+
   close = () => {
     const { onClose } = this.props;
     onClose();
@@ -57,7 +69,7 @@ export default class ChatContainer extends React.Component<
   }
 
   public render() {
-    const { messages, email } = this.state;
+    const { messages, email, onlineAdminCount } = this.state;
 
     const wrappedMessages = messages.map(
       ({ content, encodedImageData, isAdmin, id, sendedAt }) => {
@@ -75,7 +87,7 @@ export default class ChatContainer extends React.Component<
 
     return (
       <ChatContainerCover>
-        <InfoBar onlines={0} onClose={this.close} />
+        <InfoBar onlines={onlineAdminCount} onClose={this.close} />
         <ChatBoardCover>{wrappedMessages}</ChatBoardCover>
         {email === '' ? (
           <EmailInput onSubmit={this.handleEmailSubmit} />
