@@ -1,5 +1,5 @@
 export default class Message {
-  id: string;
+  _id: string;
   content?: string;
   sendedAt: number;
   isAdmin: boolean;

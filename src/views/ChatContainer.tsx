@@ -86,10 +86,10 @@ export default class ChatContainer extends React.Component<
     const { messages, email, onlineAdminCount } = this.state;
 
     const wrappedMessages = messages.map(
-      ({ content, encodedImageData, isAdmin, id, sendedAt }) => {
+      ({ content, encodedImageData, isAdmin, _id, sendedAt }) => {
         return (
           <MessageWrapper
-            key={id}
+            key={_id}
             sendedAt={sendedAt}
             isAdmin={isAdmin}
             encodedImageData={encodedImageData}
