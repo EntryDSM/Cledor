@@ -16,3 +16,5 @@ export const ChatBoardCover = styled.div`
   padding: 20px;
   overflow-y: scroll;
 `;
+
+export const BottomOfBoard = styled.div``;

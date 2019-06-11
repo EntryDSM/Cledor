@@ -6,6 +6,7 @@ import ChatBar from './ChatBar';
 import {
   ChatContainerCover,
   ChatBoardCover,
+  BottomOfBoard,
 } from './styled-components/ChatContainer';
 import {
   sendMessage,
@@ -29,6 +30,8 @@ export default class ChatContainer extends React.Component<
   ChatContainerProps,
   ChatContainerState
 > {
+  private bottomOfBoard = React.createRef<HTMLDivElement>();
+
   constructor(props: ChatContainerProps) {
     super(props);
 
@@ -40,6 +43,10 @@ export default class ChatContainer extends React.Component<
 
     listenOnReceiveMessage(this.appendMessage);
     listenOnChangeOnlineAdminCount(this.changeOnlineAdminCount);
+  }
+
+  componentDidUpdate() {
+    this.scrollToBottomOfBoard();
   }
 
   send = (content: string, imageData?: File) => {
@@ -68,6 +75,13 @@ export default class ChatContainer extends React.Component<
     join({ email });
   }
 
+  private scrollToBottomOfBoard = () => {
+    const { current } = this.bottomOfBoard;
+    if (current) {
+      current.scrollIntoView();
+    }
+  }
+
   public render() {
     const { messages, email, onlineAdminCount } = this.state;
 
@@ -88,7 +102,10 @@ export default class ChatContainer extends React.Component<
     return (
       <ChatContainerCover>
         <InfoBar onlines={onlineAdminCount} onClose={this.close} />
-        <ChatBoardCover>{wrappedMessages}</ChatBoardCover>
+        <ChatBoardCover>
+          {wrappedMessages}
+          <BottomOfBoard ref={this.bottomOfBoard} />
+        </ChatBoardCover>
         {email === '' ? (
           <EmailInput onSubmit={this.handleEmailSubmit} />
         ) : (
