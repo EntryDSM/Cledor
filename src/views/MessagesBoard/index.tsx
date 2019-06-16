@@ -7,29 +7,35 @@ interface MessagesBoardProps {
   messages: Message[];
 }
 
-const MessagesBoard: React.FunctionComponent<MessagesBoardProps> = ({
-  messages,
-}) => {
-  const wrappedMessages = messages.map(
-    ({ content, encodedImageData, isAdmin, _id, sendedAt }) => {
-      return (
-        <MessageWrapper
-          key={_id}
-          sendedAt={sendedAt}
-          isAdmin={isAdmin}
-          encodedImageData={encodedImageData}
-          content={content}
-        />
-      );
-    },
-  );
+export default class MessagesBoard extends React.Component<MessagesBoardProps> {
+  private bottomOfBoard = React.createRef<HTMLDivElement>();
 
-  return (
-    <S.ChatBoardCover>
-      {wrappedMessages}
-      <S.BottomOfBoard />
-    </S.ChatBoardCover>
-  );
-};
+  componentDidUpdate() {
+    this.bottomOfBoard.current && this.bottomOfBoard.current.scrollIntoView();
+  }
 
-export default MessagesBoard;
+  render() {
+    const { messages } = this.props;
+
+    const wrappedMessages = messages.map(
+      ({ content, encodedImageData, isAdmin, _id, sendedAt }) => {
+        return (
+          <MessageWrapper
+            key={_id}
+            sendedAt={sendedAt}
+            isAdmin={isAdmin}
+            encodedImageData={encodedImageData}
+            content={content}
+          />
+        );
+      },
+    );
+
+    return (
+      <S.ChatBoardCover>
+        {wrappedMessages}
+        <S.BottomOfBoard ref={this.bottomOfBoard} />
+      </S.ChatBoardCover>
+    );
+  }
+}
