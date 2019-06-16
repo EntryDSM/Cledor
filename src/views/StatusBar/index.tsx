@@ -10,7 +10,7 @@ const InfoBar: React.FC<InfoBarProps> = ({ onlines, onClose }) => {
   return (
     <S.InfoBarCover>
       <S.CloseButton onClick={onClose}>×</S.CloseButton>
-      <S.InfoBarText>현재 관리자</S.InfoBarText>
+      <S.InfoBarText>현재 응답 가능한 관리자</S.InfoBarText>
       <S.Onlines>{onlines}명</S.Onlines>
     </S.InfoBarCover>
   );

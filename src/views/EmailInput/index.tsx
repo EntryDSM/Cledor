@@ -41,6 +41,9 @@ export default class EmailInput extends React.Component<
     const { email } = this.state;
     return (
       <S.EmailInputForm onSubmit={this.handleSubmit}>
+        <S.GuidingMessage>
+          관리자가 나중에 확인한 후 답변을 전송할 수 있도록 이메일을 적어주세요!
+        </S.GuidingMessage>
         <S.EmailInput
           placeholder="이메일을 입력해주세요"
           value={email}

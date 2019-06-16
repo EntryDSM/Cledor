@@ -5,6 +5,15 @@ export const EmailInputForm = styled.form`
   padding: 10px;
 `;
 
+export const GuidingMessage = styled.div`
+  margin: 0 70px 10px 10px;
+  border: 1px ${Theme.MAIN_COLOR4} solid;
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: ${Theme.APEX_RADIUS};
+  border-bottom-left-radius: 0;
+`;
+
 export const EmailInput = styled.input.attrs({
   type: 'email',
 })`
