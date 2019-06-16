@@ -1,14 +1,25 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import reactTextareaAutosize from 'react-textarea-autosize';
 import Theme from '../../Theme';
 import upload_imagePng from '../assets/upload_image.png';
 import send_messagePng from '../assets/send_message.png';
 
-export const ChatBarContainer = styled.div`
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+`;
+
+export const ChatableBar = styled.div`
   display: flex;
   align-items: center;
   padding: 10px 5px;
   border-radius: ${Theme.APEX_RADIUS};
+  animation: ${fadeIn} 0.2s;
 `;
 
 export const MessegeTextarea = styled(reactTextareaAutosize)`

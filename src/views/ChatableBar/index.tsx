@@ -74,7 +74,7 @@ export default class ChatBar extends React.Component<
     if (email === '') return <EmailInput onSubmit={onChangeEmail} />;
 
     return (
-      <S.ChatBarContainer>
+      <S.ChatableBar>
         <S.UploadImageButton>
           <S.FileInputLabel htmlFor="upload-image" />
         </S.UploadImageButton>
@@ -92,7 +92,7 @@ export default class ChatBar extends React.Component<
           autoFocus
         />
         <S.SendMessegeButton onClick={this.handleSendMessage} />
-      </S.ChatBarContainer>
+      </S.ChatableBar>
     );
   }
 }
