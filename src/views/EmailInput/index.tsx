@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as S from './styles';
+import { validateEmail } from '../../utlis/validateEmail';
 
 interface EmailInputProps {
   onSubmit: (email: string) => void;
@@ -7,6 +8,7 @@ interface EmailInputProps {
 
 interface EmailInputState {
   email: string;
+  isInvalidEmail: boolean;
 }
 
 export default class EmailInput extends React.Component<
@@ -18,27 +20,31 @@ export default class EmailInput extends React.Component<
 
     this.state = {
       email: '',
+      isInvalidEmail: false,
     };
   }
 
   handleChange = ({
     target: { value },
   }: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({ email: value });
+    this.setState({ email: value, isInvalidEmail: false });
   }
 
   handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const { email } = this.state;
-    if (email) {
+    if (email && validateEmail(email)) {
       const { onSubmit } = this.props;
       onSubmit(email);
+    } else {
+      this.setState({ isInvalidEmail: true });
     }
   }
 
   render() {
-    const { email } = this.state;
+    const { email, isInvalidEmail } = this.state;
+
     return (
       <S.EmailInputForm onSubmit={this.handleSubmit}>
         <S.GuidingMessage>
@@ -48,6 +54,7 @@ export default class EmailInput extends React.Component<
           placeholder="이메일을 입력해주세요"
           value={email}
           onChange={this.handleChange}
+          hasError={isInvalidEmail}
         />
       </S.EmailInputForm>
     );

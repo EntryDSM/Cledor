@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Theme from '../../Theme';
 
 export const EmailInputForm = styled.form`
@@ -14,9 +14,7 @@ export const GuidingMessage = styled.div`
   border-bottom-left-radius: 0;
 `;
 
-export const EmailInput = styled.input.attrs({
-  type: 'email',
-})`
+export const EmailInput = styled.input<{ hasError: boolean }>`
   display: block;
   width: 100%;
   box-sizing: border-box;
@@ -29,9 +27,16 @@ export const EmailInput = styled.input.attrs({
   border: none;
   border-radius: ${Theme.APEX_RADIUS};
   background-color: ${Theme.MAIN_COLOR1};
+  transition: background-color 0.2s;
 
   &::placeholder {
     color: #777;
     font-size: 15px;
   }
+
+  ${({ hasError }) =>
+    hasError &&
+    css`
+      background-color: ${Theme.MAIN_COLOR4};
+    `}
 `;
