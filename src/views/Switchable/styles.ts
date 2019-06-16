@@ -7,7 +7,8 @@ export const SwitchableContainer = styled.div<{ canChat: boolean }>`
   right: 30px;
   box-shadow: ${Theme.DEFAULT_SHADOW};
   border-radius: ${Theme.APEX_RADIUS};
-  transition: 0.5s;
+  transition-duration: 0.4s;
+  transition-timing-function: ease-in-out;
   transition-property: width, height, background-color, transform, box-shadow;
 
   ${({ canChat }) =>
@@ -17,8 +18,9 @@ export const SwitchableContainer = styled.div<{ canChat: boolean }>`
           height: 500px;
           background-color: #fff;
 
-          ${LauncherButton} {
-            display: none;
+          ${Content} {
+            display: block;
+            opacity: 1;
           }
         `
       : css`
@@ -32,18 +34,23 @@ export const SwitchableContainer = styled.div<{ canChat: boolean }>`
             box-shadow: ${Theme.HOVER_SHADOW};
           }
 
-          ${Content} {
-            display: none;
+          ${LauncherButton} {
+            display: block;
+            opacity: 1;
           }
         `}
 `;
 
-export const LauncherButton = styled.div`
+export const switchingElement = styled.div`
   width: 100%;
   height: 100%;
+  display: none;
+  opacity: 0;
+  transition-property: opacity;
+  transition-delay: 0.2s;
+  transition-duration: 0.4s;
 `;
 
-export const Content = styled.div`
-  width: 100%;
-  height: 100%;
-`;
+export const LauncherButton = styled(switchingElement)``;
+
+export const Content = styled(switchingElement)``;
