@@ -18,32 +18,32 @@ const MessageWrapper: React.FunctionComponent<MessageWrapperProps> = ({
   const formattedTime = formatMillisecond(sendedAt);
 
   const imageMessage = encodedImageData ? (
-    <S.MessageCover>
+    <S.MessageWrapper>
       <S.StyledImage src={encodedImageData} />
       <S.MessageTime>{formattedTime}</S.MessageTime>
-    </S.MessageCover>
+    </S.MessageWrapper>
   ) : (
     ''
   );
 
   const textMessage = content ? (
-    <S.MessageCover>
+    <S.MessageWrapper>
       <S.MessageBubble>
         {content.split('\n').map((line, index) => (
           <S.TextLine key={index}>{line}</S.TextLine>
         ))}
       </S.MessageBubble>
       <S.MessageTime>{formattedTime}</S.MessageTime>
-    </S.MessageCover>
+    </S.MessageWrapper>
   ) : (
     ''
   );
 
   return (
-    <S.Component authorMe={!isAdmin}>
+    <S.MessagesDirector authorMe={!isAdmin}>
       {imageMessage}
       {textMessage}
-    </S.Component>
+    </S.MessagesDirector>
   );
 };
 

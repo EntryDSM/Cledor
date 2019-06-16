@@ -1,7 +1,24 @@
 import styled, { css } from 'styled-components';
 import Theme from '../../Theme';
 
-export const MessageCover = styled.div`
+export const MessagesDirector = styled.div<{ authorMe: boolean }>`
+  ${({ authorMe }) =>
+    authorMe &&
+    css`
+      ${MessageWrapper} {
+        flex-direction: row-reverse;
+      }
+
+      ${MessageBubble} {
+        background-color: ${Theme.MAIN_COLOR5};
+        color: #fff;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 0;
+      }
+    `}
+`;
+
+export const MessageWrapper = styled.div`
   display: flex;
   margin-bottom: 10px;
   align-items: flex-end;
@@ -29,25 +46,4 @@ export const MessageTime = styled.div`
   font-size: 10px;
   color: #aaa;
   padding: 0 5px;
-`;
-
-interface ComponentProps {
-  authorMe: boolean;
-}
-
-export const Component = styled.div`
-  ${({ authorMe }: ComponentProps) =>
-    authorMe &&
-    css`
-      ${MessageCover} {
-        flex-direction: row-reverse;
-      }
-
-      ${MessageBubble} {
-        background-color: ${Theme.MAIN_COLOR5};
-        color: #fff;
-        border-top-left-radius: 20px;
-        border-top-right-radius: 0;
-      }
-    `}
 `;
