@@ -1,3 +1,3 @@
-import MainContainer from './views/MainContainer';
+import Messenger from './views/Messenger';
 
-export default MainContainer;
+export default Messenger;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as S from './styled-components/EmailInput';
+import * as S from './styles';
 
 interface EmailInputProps {
   onSubmit: (email: string) => void;

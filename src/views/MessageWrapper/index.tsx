@@ -1,13 +1,6 @@
 import * as React from 'react';
-import {
-  Component,
-  MessageCover,
-  TextLine,
-  MessageTime,
-  StyledImage,
-  MessageBubble,
-} from './styled-components/MessageWrapper';
-import { formatMillisecond } from '../utlis';
+import * as S from './styles';
+import { formatMillisecond } from '../../utlis';
 
 interface MessageWrapperProps {
   content?: string;
@@ -25,32 +18,32 @@ const MessageWrapper: React.FunctionComponent<MessageWrapperProps> = ({
   const formattedTime = formatMillisecond(sendedAt);
 
   const imageMessage = encodedImageData ? (
-    <MessageCover>
-      <StyledImage src={encodedImageData} />
-      <MessageTime>{formattedTime}</MessageTime>
-    </MessageCover>
+    <S.MessageCover>
+      <S.StyledImage src={encodedImageData} />
+      <S.MessageTime>{formattedTime}</S.MessageTime>
+    </S.MessageCover>
   ) : (
     ''
   );
 
   const textMessage = content ? (
-    <MessageCover>
-      <MessageBubble>
+    <S.MessageCover>
+      <S.MessageBubble>
         {content.split('\n').map((line, index) => (
-          <TextLine key={index}>{line}</TextLine>
+          <S.TextLine key={index}>{line}</S.TextLine>
         ))}
-      </MessageBubble>
-      <MessageTime>{formattedTime}</MessageTime>
-    </MessageCover>
+      </S.MessageBubble>
+      <S.MessageTime>{formattedTime}</S.MessageTime>
+    </S.MessageCover>
   ) : (
     ''
   );
 
   return (
-    <Component authorMe={!isAdmin}>
+    <S.Component authorMe={!isAdmin}>
       {imageMessage}
       {textMessage}
-    </Component>
+    </S.Component>
   );
 };
 

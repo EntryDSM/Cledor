@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Theme from './Theme';
+import Theme from '../../Theme';
 
 export const EmailInputForm = styled.form`
   padding: 10px;

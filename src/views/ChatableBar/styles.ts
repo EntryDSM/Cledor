@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import reactTextareaAutosize from 'react-textarea-autosize';
-import Theme from './Theme';
+import Theme from '../../Theme';
 import upload_imagePng from '../assets/upload_image.png';
 import send_messagePng from '../assets/send_message.png';
 
-export const ChatBarContainerCover = styled.div`
+export const ChatBarContainer = styled.div`
   display: flex;
   align-items: center;
   padding: 10px 5px;

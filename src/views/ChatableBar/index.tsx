@@ -1,16 +1,12 @@
 import * as React from 'react';
 import { Key } from 'ts-keycode-enum';
-import {
-  ChatBarContainerCover,
-  MessegeTextarea,
-  UploadImageButton,
-  SendMessegeButton,
-  HiddenFileInput,
-  FileInputLabel,
-} from './styled-components/ChatBar';
+import * as S from './styles';
+import EmailInput from '../EmailInput';
 
 interface ChatBarProps {
   send: (content: string, imageData?: File) => void;
+  onChangeEmail: (email: string) => void;
+  email: string;
 }
 
 interface ChatBarState {
@@ -74,25 +70,29 @@ export default class ChatBar extends React.Component<
   }
 
   public render() {
+    const { email, onChangeEmail } = this.props;
+    if (email === '') return <EmailInput onSubmit={onChangeEmail} />;
+
     return (
-      <ChatBarContainerCover>
-        <UploadImageButton>
-          <FileInputLabel htmlFor="upload-image" />
-        </UploadImageButton>
-        <HiddenFileInput
+      <S.ChatBarContainer>
+        <S.UploadImageButton>
+          <S.FileInputLabel htmlFor="upload-image" />
+        </S.UploadImageButton>
+        <S.HiddenFileInput
           type="file"
           id="upload-image"
           onChange={this.handleUploadImage}
         />
-        <MessegeTextarea
+        <S.MessegeTextarea
           placeholder="메시지를 입력해주세요"
           maxRows={6}
           value={this.state.content}
           onChange={this.handleTextareaChange}
           onKeyDown={this.handleTextareaKeyDown}
+          autoFocus
         />
-        <SendMessegeButton onClick={this.handleSendMessage} />
-      </ChatBarContainerCover>
+        <S.SendMessegeButton onClick={this.handleSendMessage} />
+      </S.ChatBarContainer>
     );
   }
 }
